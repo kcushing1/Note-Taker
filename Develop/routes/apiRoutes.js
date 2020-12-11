@@ -5,17 +5,7 @@ const uniqid = require("uniqid");
 
 module.exports = function (app) {
   app.get("/api/notes", (req, res) => {
-    //read the db.json file at this url
-    /*
-    fs.readFile(
-      path.join(__dirname, "../db/db.json"),
-      "utf8",
-      (error, data) => {
-        error ? console.error(error) : console.log(data);
-      }
-    );
-*/
-
+    //return the notes db array
     res.json(notes);
   });
 
@@ -23,29 +13,30 @@ module.exports = function (app) {
     //create a unique id
     let newId = uniqid();
 
-    //create a new note to store in db
+    //create a new note object to store in notes db
     const newNote = {
       title: req.body.title,
-      note: req.body.text,
+      text: req.body.text,
       id: newId,
     };
-
-    console.log(newNote);
-    console.log("title is " + newNote.title + " and text is " + newNote.text);
 
     //push the object with req.body and id to db array
     notes.push(newNote);
 
-    //return the db array
+    //return the notes db array
     res.json(notes);
   });
 
   app.delete("/api/notes/:id", (req, res) => {
-    const idDelete = res.body.id;
-    console.log(idDelete);
+    const idDelete = req.params.id;
 
-    //find the note in the array
-    const idDeleteIndex = notes.findIndex(idDelete);
-    console.log(idDeleteIndex);
+    //find the note object to delete in the note array
+    const idDeleteIndex = notes.findIndex((notes) => notes.id === idDelete);
+
+    //remove the indicated note object from notes array
+    notes.splice(idDeleteIndex, 1);
+
+    //return the notes db array
+    res.json(notes);
   });
 };
