@@ -9,17 +9,22 @@ A simple way to record thoughts and notes
 ## Table of Contents
 
 - [Installation](#installation)
+- [Application](#application)
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)
 
+## Application
+
+View application here: https://note-taker-kcushing.herokuapp.com/
+
 ![Note Taker Demo](./Assets/note-taker-demo.gif)
 
 ## Installation
 
-This app is deployed on heroku. 
+This app is deployed on heroku at the link provided above.
 
 ## Usage
 
